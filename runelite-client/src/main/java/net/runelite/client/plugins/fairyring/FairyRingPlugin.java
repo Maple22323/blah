@@ -76,8 +76,6 @@ import net.runelite.client.util.Text;
 )
 public class FairyRingPlugin extends Plugin
 {
-	public static final String CONFIG_GROUP = "fairyrings";
-	public static final String CONFIG_GROUP_TAGS = "fairyringtags";
 	private static final String[] leftDial = {"A", "D", "C", "B"};
 	private static final String[] middleDial = {"I", "L", "K", "J"};
 	private static final String[] rightDial = {"P", "S", "R", "Q"};
@@ -130,7 +128,7 @@ public class FairyRingPlugin extends Plugin
 	@Override
 	public void resetConfiguration()
 	{
-		List<String> extraKeys = configManager.getConfigurationKeys(CONFIG_GROUP + "." + CONFIG_GROUP_TAGS);
+		List<String> extraKeys = configManager.getConfigurationKeys(FairyRingConfig.CONFIG_GROUP + "." + FairyRingConfig.CONFIG_GROUP_TAGS);
 		for (String prefix : extraKeys)
 		{
 			List<String> keys = configManager.getConfigurationKeys(prefix);
@@ -482,7 +480,7 @@ public class FairyRingPlugin extends Plugin
 
 	Collection<String> getTags(String fairyRingCode)
 	{
-		String config = Optional.ofNullable(configManager.getConfiguration(CONFIG_GROUP + "." + CONFIG_GROUP_TAGS, fairyRingCode)).orElse("").toLowerCase();
+		String config = Optional.ofNullable(configManager.getConfiguration(FairyRingConfig.CONFIG_GROUP + "." + FairyRingConfig.CONFIG_GROUP_TAGS, fairyRingCode)).orElse("").toLowerCase();
 		return new LinkedHashSet<>(Text.fromCSV(config));
 	}
 
@@ -490,11 +488,11 @@ public class FairyRingPlugin extends Plugin
 	{
 		if (Strings.isNullOrEmpty(tags))
 		{
-			configManager.unsetConfiguration(CONFIG_GROUP + "." + CONFIG_GROUP_TAGS, fairyRingCode);
+			configManager.unsetConfiguration(FairyRingConfig.CONFIG_GROUP + "." + FairyRingConfig.CONFIG_GROUP_TAGS, fairyRingCode);
 		}
 		else
 		{
-			configManager.setConfiguration(CONFIG_GROUP + "." + CONFIG_GROUP_TAGS, fairyRingCode, tags);
+			configManager.setConfiguration(FairyRingConfig.CONFIG_GROUP + "." + FairyRingConfig.CONFIG_GROUP_TAGS, fairyRingCode, tags);
 		}
 	}
 
