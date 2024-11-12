@@ -258,7 +258,7 @@ public class PartyPlugin extends Plugin
 			partyStatusOverlay.updateConfig();
 			// rebuild the panel in the event the "Recolor names" option changes
 			SwingUtilities.invokeLater(panel::updateAll);
-			
+
 			// Handle panel visibility
 			if (event.getKey().equals("hidePanel"))
 			{
