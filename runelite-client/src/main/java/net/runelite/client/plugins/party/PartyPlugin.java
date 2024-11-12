@@ -262,7 +262,8 @@ public class PartyPlugin extends Plugin
 			// Handle panel visibility
 			if (event.getKey().equals("hidePanel"))
 			{
-				SwingUtilities.invokeLater(() -> {
+				SwingUtilities.invokeLater(() ->
+				{
 					if (config.hidePanel())
 					{
 						clientToolbar.removeNavigation(navButton);
